@@ -1,0 +1,20 @@
+<paquet
+	prefix="hal_auteurs"
+	categorie="edition"
+	version="0.1.0"
+	etat="stable"
+	compatibilite="[3.0.0;3.0.*]"
+	logo="prive/themes/spip/images/hal-32.png"
+	schema="0.1.0"
+>	
+
+	<nom>HALv3 - Auteurs</nom>
+	<!-- Création automatique de dépots HAL depuis le formulaire d'édition d'auteur -->
+
+	<auteur lien="http://www.kent1.info" mail="kent1@arscenic.info">kent1</auteur>
+	<necessite nom="cextras" />
+	<necessite nom="hal" />
+
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/hal_auteurs.php" />
+	<pipeline nom="editer_contenu_objet" inclure="hal_auteurs_pipelines.php" />
+</paquet>
