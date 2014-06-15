@@ -19,4 +19,5 @@
 	<pipeline nom="editer_contenu_objet" inclure="hal_auteurs_pipelines.php" />
 	<pipeline nom="afficher_contenu_objet" inclure="hal_auteurs_pipelines.php" />
 	<pipeline nom="formulaire_verifier" inclure="hal_auteurs_pipelines.php" />
+	<pipeline nom="post_edition" inclure="hal_auteurs_pipelines.php" />
 </paquet>

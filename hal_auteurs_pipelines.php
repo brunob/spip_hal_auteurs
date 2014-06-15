@@ -46,7 +46,6 @@ function hal_auteurs_afficher_contenu_objet($flux){
 	return $flux;
 }
 
-
 /**
  * Vérifier la valeur du champ HAL
  * 
@@ -69,6 +68,46 @@ function hal_auteurs_formulaire_verifier($flux){
 				}
 			}
 		}
+	}
+	return $flux;
+}
+
+/**
+ * Créer et associer un hal à l'auteur lors de la modification champ HAL
+ * 
+ * @pipeline post_edition
+ * @param array $flux 
+ * 		Données du pipeline
+ * @return array $flux
+ *		Données du pipeline modifiées
+ */ 
+function hal_auteurs_post_edition($flux){
+	if($flux['args']['table'] == "spip_auteurs" && isset($flux['data']['hal'])){
+		if(isset($flux['data']['hal'])){
+			$hals = array();
+			if(is_numeric($flux['data']['hal']) && $flux['data']['hal'] > 0)
+				$hals[] = $flux['data']['hal'];
+			else
+				$hals = explode(',',$flux['data']['hal']);
+			include_spip('action/editer_hal');
+			include_spip('action/editer_liens');
+			foreach($hals as $hal){
+				if(is_numeric($hal) && $hal > 0){
+					$id_hal = sql_fetsel('statut,id_hal','spip_hals','authid = '.intval($hal));
+					$set=array('authid'=>$hal,'statut'=>'publie');
+					if(!$id_hal){
+						$set['titre'] = sql_getfetsel('nom','spip_auteurs','id_auteur='.intval($flux['args']['id_objet']));
+						$id_hal = hal_inserer();
+					}
+					else{
+						$id_hal = $id_hal['id_hal'];
+					}
+					$err = hal_modifier($id_hal,$set);
+					objet_associer(array('auteur'=>$flux['args']['id_objet']), array('hal'=>$id_hal));
+				}
+			}
+		}
+		
 	}
 	return $flux;
 }
