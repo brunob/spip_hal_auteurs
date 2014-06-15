@@ -45,4 +45,31 @@ function hal_auteurs_afficher_contenu_objet($flux){
 	}
 	return $flux;
 }
+
+
+/**
+ * Vérifier la valeur du champ HAL
+ * 
+ * @pipeline formulaire_verifier
+ * @param array $flux 
+ * 		Données du pipeline
+ * @return array $flux
+ *		Données du pipeline modifiées
+ */ 
+function hal_auteurs_formulaire_verifier($flux){
+	if($flux['args']['form'] == "editer_auteur"){
+		if(($hal = _request('hal')) && strlen($hal) > 1){
+			if(!is_numeric($hal)){
+				$hals = explode(',',$hal);
+				foreach($hals as $hal){
+					if(!is_numeric($hal) || $hal <= 0){
+						$flux['hal'] = _T('hal_auteurs:erreur_champ_hal');
+						break;
+					}
+				}
+			}
+		}
+	}
+	return $flux;
+}
 ?>
