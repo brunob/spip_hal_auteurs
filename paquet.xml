@@ -17,4 +17,5 @@
 
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/hal_auteurs.php" />
 	<pipeline nom="editer_contenu_objet" inclure="hal_auteurs_pipelines.php" />
+	<pipeline nom="afficher_contenu_objet" inclure="hal_auteurs_pipelines.php" />
 </paquet>
