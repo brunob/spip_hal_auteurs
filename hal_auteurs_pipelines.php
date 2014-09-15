@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Licence
- * (c) 2007-2013 fanouch
+ * Plugin Hal auteurs
+ * (c) 2014 kent1
  * Distribue sous licence GPL
  * 
- * @package SPIP\Licences\Pipelines
+ * @package SPIP\Hal auteurs\Pipelines
  */
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
@@ -22,7 +22,14 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  */
 function hal_auteurs_editer_contenu_objet($flux){
 	if(in_array($flux['args']['type'],array('auteur'))){
-		if(preg_match(",<li [^>]*class=[\"']editer editer_bio.*>(.*)<\/li>,Uims",$flux['data'],$regs)){
+		include_spip('inc/autoriser');
+		if(autoriser('modifierextra_hal', 'auteur', $flux['args']['contexte']['id_auteur'], '', array(
+			'type' => 'auteur',
+			'id_objet' => $flux['args']['contexte']['id_auteur'],
+			'contexte' => isset($args['contexte']) ? $args['contexte'] : array(),
+			'table' => 'spip_auteurs',
+			'champ' => 'hal',
+		)) && preg_match(",<li [^>]*class=[\"']editer editer_bio.*>(.*)<\/li>,Uims",$flux['data'],$regs)){
 			$ajouts = recuperer_fond('inclure/saisie_hal_auteurs',$flux['args']['contexte']);
 			$flux['data'] = str_replace($regs[0],$regs[0].$ajouts,$flux['data']);
 		}
