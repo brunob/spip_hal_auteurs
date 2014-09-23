@@ -96,6 +96,12 @@ function hal_auteurs_post_edition($flux){
 				$hals[] = $flux['data']['hal'];
 			else
 				$hals = explode(',',$flux['data']['hal']);
+			
+			$hals_auteurs = array();
+			$hals_test = sql_select('hal.id_hal','spip_hals as hal LEFT JOIN spip_auteurs_liens as lien ON lien.objet="hal" AND lien.id_objet=hal.id_hal','lien.id_auteur='.intval($flux['args']['id_objet']));
+			while($hal = sql_fetch($hals_test)){
+				$hals_auteurs[$hal['id_hal']] = $hal['id_hal'];
+			}
 			include_spip('action/editer_hal');
 			include_spip('action/editer_liens');
 			foreach($hals as $hal){
@@ -105,14 +111,25 @@ function hal_auteurs_post_edition($flux){
 					if(!$id_hal){
 						$set['titre'] = sql_getfetsel('nom','spip_auteurs','id_auteur='.intval($flux['args']['id_objet']));
 						$id_hal = hal_inserer();
+						if(isset($hals_auteurs[$hal['id_hal']]))
+							unset($hals_auteurs[$hal['id_hal']]);
 					}
 					else{
 						$id_hal = $id_hal['id_hal'];
+						if(isset($hals_auteurs[$id_hal]))
+							unset($hals_auteurs[$id_hal]);
 					}
 					$err = hal_modifier($id_hal,$set);
 					objet_associer(array('auteur'=>$flux['args']['id_objet']), array('hal'=>$id_hal));
 				}
 			}
+			if(count($hals_auteurs) > 0){
+				$set = array('statut' => 'poubelle');
+				foreach($hals_auteurs as $id_hal){
+					$err = hal_modifier($id_hal,$set);
+				}
+			}
+			
 		}
 		
 	}
