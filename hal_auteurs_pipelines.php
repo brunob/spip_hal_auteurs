@@ -126,7 +126,12 @@ function hal_auteurs_post_edition($flux){
 			if(count($hals_auteurs) > 0){
 				$set = array('statut' => 'poubelle');
 				foreach($hals_auteurs as $id_hal){
-					$err = hal_modifier($id_hal,$set);
+					if(sql_getfetsel('id_auteur','spip_auteurs_liens','objet="hal" AND id_objet='.intval($id_hal)." AND id_auteur != ".intval($flux['args']['id_objet'])))
+						objet_dissocier(array('auteur'=>$flux['args']['id_objet']), array('hal'=>$id_hal));
+					else{
+						objet_dissocier(array('auteur'=>$flux['args']['id_objet']), array('hal'=>$id_hal));
+						$err = hal_modifier($id_hal,$set);
+					}
 				}
 			}
 			
