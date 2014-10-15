@@ -136,7 +136,6 @@ function hal_auteurs_post_edition($flux){
 			}
 			
 		}
-		
 	}
 	return $flux;
 }
