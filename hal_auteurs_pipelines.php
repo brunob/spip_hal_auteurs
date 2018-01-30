@@ -29,7 +29,7 @@ function hal_auteurs_editer_contenu_objet($flux){
 			'contexte' => isset($args['contexte']) ? $args['contexte'] : array(),
 			'table' => 'spip_auteurs',
 			'champ' => 'hal',
-		)) && preg_match(",<li [^>]*class=[\"']editer editer_bio.*>(.*)<\/li>,Uims",$flux['data'],$regs)){
+		)) && preg_match(",<(li|div) [^>]*class=[\"']editer editer_bio.*>(.*)<\/(li|div)>,Uims",$flux['data'],$regs)){
 			$ajouts = recuperer_fond('inclure/saisie_hal_auteurs',$flux['args']['contexte']);
 			$flux['data'] = str_replace($regs[0],$regs[0].$ajouts,$flux['data']);
 		}
