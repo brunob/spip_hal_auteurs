@@ -14,6 +14,7 @@
 	<auteur lien="http://www.kent1.info" mail="kent1@arscenic.info">kent1</auteur>
 	<necessite nom="cextras" />
 	<necessite nom="hal" />
+	<necessite nom="saisies" />
 
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/hal_auteurs.php" />
 	<pipeline nom="editer_contenu_objet" inclure="hal_auteurs_pipelines.php" />
