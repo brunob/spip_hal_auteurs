@@ -10,7 +10,7 @@
  * @package SPIP\HAL_Auteurs\Administration
  */
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 /**
  * Installation ou mise à jour du plugin
@@ -48,5 +48,3 @@ function hal_auteurs_upgrade($nom_meta_base_version,$version_cible){
 function hal_auteurs_vider_tables($nom_meta_base_version) {
 	effacer_meta($nom_meta_base_version);
 }
-
-?>

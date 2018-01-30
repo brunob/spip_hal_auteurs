@@ -1,6 +1,3 @@
-<li class="editer editer_hal[ (#ENV**{erreurs}|table_valeur{hal}|oui)erreur]">
-	<label for="hal"><:hal_auteurs:label_hal:></label>
-	[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{hal})</span>]
-	<p class="explication"><:hal_auteurs:explication_hal:></p>
-	<input type="text" name="hal" id="hal" class="text" value="#ENV**{hal}" />
-</li>
+[(#SAISIE{input,hal,
+	label=<:hal_auteurs:label_hal:>,
+	explication=<:hal_auteurs:explication_hal:>})]
