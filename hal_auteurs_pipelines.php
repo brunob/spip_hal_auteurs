@@ -7,7 +7,7 @@
  * @package SPIP\Hal auteurs\Pipelines
  */
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 /**
  * Insertion dans le pipeline editer_contenu_objet (SPIP)

@@ -10,7 +10,7 @@
  * @package SPIP\HAL_Auteurs\Administration
  */
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 /**
  * Installation ou mise à jour du plugin
