@@ -26,5 +26,3 @@ function hal_auteurs_declarer_tables_objets_sql($tables){
 	$tables['spip_auteurs']['champs_versionnes'][] = "hal";
 	return $tables;
 }
-
-?>

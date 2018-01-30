@@ -48,5 +48,3 @@ function hal_auteurs_upgrade($nom_meta_base_version,$version_cible){
 function hal_auteurs_vider_tables($nom_meta_base_version) {
 	effacer_meta($nom_meta_base_version);
 }
-
-?>
