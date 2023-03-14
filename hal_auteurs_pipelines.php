@@ -24,13 +24,14 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  * 		Le contexte du pipeline complété
  */
 function hal_auteurs_editer_contenu_objet($flux) {
+	$args = [];
 	if (in_array($flux['args']['type'], ['auteur'])) {
 		include_spip('inc/autoriser');
 		if (
 			autoriser('modifierextra_hal', 'auteur', $flux['args']['contexte']['id_auteur'], '', [
 			'type' => 'auteur',
 			'id_objet' => $flux['args']['contexte']['id_auteur'],
-			'contexte' => isset($args['contexte']) ? $args['contexte'] : [],
+			'contexte' => $args['contexte'] ?? [],
 			'table' => 'spip_auteurs',
 			'champ' => 'hal',
 			]) and preg_match(",<(li|div) [^>]*class=[\"']editer editer_bio.*>(.*)<\/(li|div)>,Uims", $flux['data'], $regs)
