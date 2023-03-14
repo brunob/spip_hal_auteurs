@@ -34,7 +34,7 @@ function hal_auteurs_editer_contenu_objet($flux) {
 			'contexte' => $args['contexte'] ?? [],
 			'table' => 'spip_auteurs',
 			'champ' => 'hal',
-			]) and preg_match(",<(li|div) [^>]*class=[\"']editer editer_bio.*>(.*)<\/(li|div)>,Uims", $flux['data'], $regs)
+			]) and preg_match(",<div [^>]*class=[\"']editer editer_bio.*>(.*)<\/div>,Uims", $flux['data'], $regs)
 		) {
 			$ajouts = recuperer_fond('inclure/saisie_hal_auteurs', $flux['args']['contexte']);
 			$flux['data'] = str_replace($regs[0], $regs[0] . $ajouts, $flux['data']);
