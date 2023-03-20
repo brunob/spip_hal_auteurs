@@ -4,7 +4,7 @@ Création de dépôts hals depuis le formulaire d'édition des auteurs.
 
 ## Nécessite
 
-* [SPIP](http://www.spip.net) >= 3.0
+* [SPIP](http://www.spip.net) >= 4.1
 * [Hal](https://github.com/kent1D/spip_hal) : plugin d'interface entre SPIP et HAL
 * [Champs extras](http://plugins.spip.net/cextras.html) : plugin permettant d'ajouter de nouveaux champs facilement à tout objet SPIP
 
