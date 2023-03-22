@@ -1,0 +1,81 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function effacer_meta not found\\.$#"
+			count: 1
+			path: hal_auteurs_administrations.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 1
+			path: hal_auteurs_administrations.php
+
+		-
+			message: "#^Function maj_plugin not found\\.$#"
+			count: 1
+			path: hal_auteurs_administrations.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 2
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function _request not found\\.$#"
+			count: 1
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 1
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function hal_inserer not found\\.$#"
+			count: 1
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function hal_modifier not found\\.$#"
+			count: 2
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 3
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function objet_associer not found\\.$#"
+			count: 1
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function objet_dissocier not found\\.$#"
+			count: 2
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function recuperer_fond not found\\.$#"
+			count: 2
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function sql_fetch not found\\.$#"
+			count: 1
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function sql_fetsel not found\\.$#"
+			count: 2
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 2
+			path: hal_auteurs_pipelines.php
+
+		-
+			message: "#^Function sql_select not found\\.$#"
+			count: 1
+			path: hal_auteurs_pipelines.php
