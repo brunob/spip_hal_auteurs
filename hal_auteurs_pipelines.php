@@ -122,6 +122,8 @@ function hal_auteurs_post_edition($flux) {
 			foreach ($hals as $hal) {
 				// authid
 				$hal = trim($hal);
+				$id_hal = null;
+				$set = [];
 				if (is_numeric($hal) and $hal > 0) {
 					$id_hal = sql_fetsel('statut,id_hal', 'spip_hals', 'authid = ' . intval($hal));
 					$set = ['authid' => $hal,'statut' => 'publie'];
