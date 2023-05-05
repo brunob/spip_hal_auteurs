@@ -101,7 +101,7 @@ function hal_auteurs_formulaire_verifier($flux) {
  *		Données du pipeline modifiées
  */
 function hal_auteurs_post_edition($flux) {
-	if ($flux['args']['table'] == 'spip_auteurs' and isset($flux['data']['hal'])) {
+	if (isset($flux['args']['table']) and $flux['args']['table'] == 'spip_auteurs' and isset($flux['data']['hal'])) {
 		if (isset($flux['data']['hal'])) {
 			$hals = [];
 			// si hals est sous la forme de plusieurs identifiants numériques
